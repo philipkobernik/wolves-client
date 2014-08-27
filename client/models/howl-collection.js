@@ -7,10 +7,7 @@ module.exports = Collection.extend({
     var self = this;
     this.fetch();
 
-
-    setInterval(function() {
-      self.fetch();
-    }, 2000);
+    this.fetchRealtime();
 
   },
   model: Howl,
@@ -18,4 +15,14 @@ module.exports = Collection.extend({
   comparator: function(model) {
     return -model.createdAt.valueOf();
   },
+  fetchRealtime: function() {
+    var self = this;
+    var connection = new WebSocket('ws://wolves.technology');
+    connection.onmessage = function(event) {
+      var message = JSON.parse(event.data);
+      if(message.channel === self.url && message.action === 'update'){
+        self.fetchById(message.id);
+      }
+    }
+  }
 });
