@@ -9,6 +9,10 @@ module.exports = Collection.extend({
 
     this.fetchRealtime();
 
+    setInterval(function() {
+      self.invoke('calculateTimeAgo'); // loop through, call fn on each model
+    }, 1000 * 30); // 30 seconds
+
   },
   model: Howl,
   url: 'http://wolves.technology/howls',

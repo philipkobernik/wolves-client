@@ -18,6 +18,8 @@
     "ampersand-router": "~1.0.2",
     "ampersand-view-switcher": "~1.0.3",
     "ampersand-model": "~4.0.1",
-    "ampersand-rest-collection": "~2.0.1"
+    "ampersand-rest-collection": "~2.0.1",
+    "moment": "~2.8.2",
+    "stylizer": "~1.0.0"
   }
 }
